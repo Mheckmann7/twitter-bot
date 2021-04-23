@@ -1,6 +1,7 @@
-const Twit = require('twit')
-const config = require('./config')
 
+var twit = require('twit');
+var config = require('./config.js');
+var Twitter = new twit(config);
 // const bot = new Twit(config)
 
 // function postStatus() {
@@ -18,7 +19,7 @@ const config = require('./config')
 
 var favoriteTweet = function(){
     var params = {
-        q: '#nodejs, #Nodejs',  // REQUIRED
+        q: '#code',  // REQUIRED
         result_type: 'recent',
         lang: 'en'
     }
@@ -36,6 +37,7 @@ var favoriteTweet = function(){
           // if there was an error while 'favorite'
           if(err){
             console.log('CANNOT BE FAVORITE... Error');
+            console.log(err)
           }
           else{
             console.log('FAVORITED... Success!!!');
@@ -47,4 +49,9 @@ var favoriteTweet = function(){
   // grab & 'favorite' as soon as program is running...
   favoriteTweet();
   // 'favorite' a tweet in every 60 minutes
-  setInterval(favoriteTweet, 3600000);
+setInterval(favoriteTweet, 3600000);
+  
+function ranDom (arr) {
+  var index = Math.floor(Math.random()*arr.length);
+  return arr[index];
+};
